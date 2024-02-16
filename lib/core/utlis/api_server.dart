@@ -3,19 +3,18 @@ import 'package:flutter/material.dart';
 
 class ApiServer {
   final _baseUrl = 'https://www.googleapis.com/books/v1/';
-  final Dio dio;
-  ApiServer(this.dio);
+  final Dio _dio;
+  ApiServer(this._dio);
 
   Future<Map<String, dynamic>> get({
     required String endPoint,
-    @required String? token,
+    String? token,
   }) async {
     Map<String, String> headers = {};
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
-
-    var response = await dio.get(
+    var response = await _dio.get(
       '$_baseUrl$endPoint',
       options: Options(
         headers: headers,
@@ -33,7 +32,7 @@ class ApiServer {
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
-    var response = await dio.post(
+    var response = await _dio.post(
       '$_baseUrl$endPoint',
       data: body,
       options: Options(
@@ -54,7 +53,7 @@ class ApiServer {
     if (token != null) {
       headers.addAll({'Authorization': 'Bearer $token'});
     }
-    var response = await dio.put(
+    var response = await _dio.put(
       '$_baseUrl$endPoint',
       data: body,
       options: Options(
