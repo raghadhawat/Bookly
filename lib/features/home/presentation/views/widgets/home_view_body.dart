@@ -26,12 +26,11 @@ class HomeViewBody extends StatelessWidget {
                 height: 50,
               ),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  'Newset Books',
-                  style: Styles.textStyle18,
-                ),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 30),
+                  child: Text(
+                    'Newset Books',
+                    style: Styles.textStyle18,
+                  )),
               SizedBox(
                 height: 20,
               ),
@@ -39,6 +38,7 @@ class HomeViewBody extends StatelessWidget {
           ),
         ),
         SliverFillRemaining(
+          // hasScrollBody: false,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: BestSellerListView(),
