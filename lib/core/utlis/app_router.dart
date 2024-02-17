@@ -36,22 +36,13 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kBookDetailsView,
-        pageBuilder: (context, state) => CustomTransitionPage(
-          transitionDuration: kTransitionDuration,
-          child: BlocProvider(
-            create: (context) => SimilarBooksCubit(
-              getIt.get<HomeRepoImpl>(),
-            ),
-            child: BookDetailsView(
-              bookModel: state.extra as BookModel,
-            ),
+        builder: (context, state) => BlocProvider(
+          create: (context) => SimilarBooksCubit(
+            getIt.get<HomeRepoImpl>(),
           ),
-          transitionsBuilder: (context, animation, secondaryAnimation, child) {
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInOut).animate(animation),
-              child: child,
-            );
-          },
+          child: BookDetailsView(
+            bookModel: state.extra as BookModel,
+          ),
         ),
       ),
       GoRoute(
